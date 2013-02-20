@@ -88,7 +88,7 @@ public class ClsTabla {
      * @function setFontTamaño_LetraJTable
      * @param tblJTable
      */
-    public void setFontTamaño_LetraJTable(JTable tblJTable){
+    public void setFontTamano_LetraJTable(JTable tblJTable){
         tblJTable.setFont(new java.awt.Font("Verdana", 0, 12));
         JTableHeader th;
         th = tblJTable.getTableHeader();
@@ -101,7 +101,7 @@ public class ClsTabla {
      * @param nameFuenteString
      * @param tamañoI 
      */
-    public void setFontTamaño_LetraJTable(JTable tblJTable,String nameFuenteString,int tamañoI){
+    public void setFontTamano_LetraJTable(JTable tblJTable,String nameFuenteString,int tamañoI){
         tblJTable.setFont(new java.awt.Font(nameFuenteString, 0, tamañoI));
         JTableHeader th;
         th = tblJTable.getTableHeader();
