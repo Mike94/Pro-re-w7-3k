@@ -1,6 +1,5 @@
 package clases;
 
-//import com.lowagie.text.Font;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
