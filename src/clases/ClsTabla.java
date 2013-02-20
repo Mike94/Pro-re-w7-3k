@@ -102,7 +102,7 @@ public class ClsTabla {
      * @param tamañoI 
      */
     public void setFontTamano_LetraJTable(JTable tblJTable,String nameFuenteString,int tamanoI){
-        tblJTable.setFont(new java.awt.Font(nameFuenteString, 0, tamañoI));
+        tblJTable.setFont(new java.awt.Font(nameFuenteString, 0, tamanoI));
         JTableHeader th;
         th = tblJTable.getTableHeader();
         th.setFont(new java.awt.Font(nameFuenteString, Font.BOLDITALIC, tamanoI));
