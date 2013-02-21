@@ -14,7 +14,7 @@ public class Project01 {
      */
     public static void main(String[] args) {
         // modificando
-        dlgAccessSystem dialog=new dlgAccessSystem(new javax.swing.JFrame(), true);
+        dlgAccessSystem dialog = new dlgAccessSystem(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
     }
 }

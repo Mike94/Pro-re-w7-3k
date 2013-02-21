@@ -10,13 +10,15 @@ import clases.ClsSesion;
  */
 public class dlgAccessSystem extends javax.swing.JDialog {
 
-    private ClsDatabase bd=new ClsDatabase();
-    private ClsSeguridad seguridad=new ClsSeguridad();
-    private ClsSesion sesion=new ClsSesion();
+    private ClsDatabase bd = new ClsDatabase();
+    private ClsSeguridad seguridad = new ClsSeguridad();
+    private ClsSesion sesion = new ClsSesion();
+
     /**
      * Creates new form dlgAccessSystem
+     *
      * @param parent
-     * @param modal  
+     * @param modal
      */
     public dlgAccessSystem(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -31,32 +33,35 @@ public class dlgAccessSystem extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
     //___________________________________________________________________________________ Soy una barra separadora :)
+
     /**
-     * @descripcion Se ejecuta cuando se realiza click sobre el boton Aceptar de la interfaz
+     * @descripcion Se ejecuta cuando se realiza click sobre el boton Aceptar de
+     * la interfaz
      */
-    public void _aceptar(){
+    public void _aceptar() {
         //Obtenemos los valores de los jtextfield
-        String userString=this.txtUsuario.getText().toString();
-        String passString=this.pswPassword.getText().toString();
+        String userString = this.txtUsuario.getText().toString();
+        String passString = this.pswPassword.getText().toString();
         //Encriptamos el passString a MD5
-        passString=seguridad.encriptar(passString, seguridad.getMD5());
+        passString = seguridad.encriptar(passString, seguridad.getMD5());
         //Verificamos en la BD el acceso de usuario
-        Object[][] datos=bd.select("Usuarios", "user", "user="+userString+" and password="+passString+"");
-        if(datos!=null){
-            sesion._getPermisosTabla(userString,bd);
-            frmPrincipal frame=new frmPrincipal(bd);
+        Object[][] datos = bd.select("Usuarios", "user", "user=" + userString + " and password=" + passString + "");
+        if (datos != null) {
+            sesion._getPermisosTabla(userString, bd);
+            frmPrincipal frame = new frmPrincipal(bd);
             frame.setVisible(true);
         }
     }
+
     /**
-     * @descripcion Se ejecuta cuando se realiza click sobre el boton Cancelar de la interfaz
+     * @descripcion Se ejecuta cuando se realiza click sobre el boton Cancelar
+     * de la interfaz
      */
-    public void _cancelar(){
+    public void _cancelar() {
         System.exit(0);//cerramos todo        
     }
-    
-    //___________________________________________________________________________________ Soy una barra separadora :)
 
+    //___________________________________________________________________________________ Soy una barra separadora :)
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -208,13 +213,13 @@ public class dlgAccessSystem extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
-        if (evt.getKeyCode()==10) {//el 10 Corresponde a ENTER
+        if (evt.getKeyCode() == 10) {//el 10 Corresponde a ENTER
             this.pswPassword.requestFocus();
         }
     }//GEN-LAST:event_txtUsuarioKeyReleased
 
     private void pswPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordKeyReleased
-        if (evt.getKeyCode()==10) {//el 10 Corresponde a ENTER
+        if (evt.getKeyCode() == 10) {//el 10 Corresponde a ENTER
             _aceptar();
         }
     }//GEN-LAST:event_pswPasswordKeyReleased

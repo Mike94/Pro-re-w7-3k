@@ -13,14 +13,17 @@ import clases.ClsDatabase;
 public class frmPrincipal extends javax.swing.JFrame {
 
     private ClsDatabase bd;
+
     /**
      * Creates new form frmPrincipal
-     * @param baseDatabased 
+     *
+     * @param baseDatabased
      */
     public frmPrincipal(ClsDatabase baseDatabased) {
-        this.bd=baseDatabased;
+        this.bd = baseDatabased;
         initComponents();
     }
+
     public frmPrincipal() {
         initComponents();
     }
