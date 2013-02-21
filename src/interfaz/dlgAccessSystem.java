@@ -21,6 +21,9 @@ public class dlgAccessSystem extends javax.swing.JDialog {
     public dlgAccessSystem(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.txtUsuario.setText("");
+        this.pswPassword.setText("");
+        this.txtUsuario.requestFocus();
         //Configuramos la clase bd
         bd.setDataBase("BD");
         bd.setUser("root");
@@ -41,6 +44,8 @@ public class dlgAccessSystem extends javax.swing.JDialog {
         Object[][] datos=bd.select("Usuarios", "user", "user="+userString+" and password="+passString+"");
         if(datos!=null){
             sesion._getPermisosTabla(userString,bd);
+            frmPrincipal frame=new frmPrincipal(bd);
+            frame.setVisible(true);
         }
     }
     /**
@@ -77,7 +82,7 @@ public class dlgAccessSystem extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblTitulo.setBackground(new java.awt.Color(102, 102, 102));
+        lblTitulo.setBackground(new java.awt.Color(204, 204, 204));
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Acceso al Sistema");
@@ -89,9 +94,25 @@ public class dlgAccessSystem extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
+        });
+
         btn_Cancelar.setText("Cancelar");
+        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CancelarActionPerformed(evt);
+            }
+        });
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Usuario:");
 
@@ -101,6 +122,11 @@ public class dlgAccessSystem extends javax.swing.JDialog {
         lblEtiqueta.setText("Ingrese su usuario y password");
 
         pswPassword.setText("jPasswordField1");
+        pswPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pswPasswordKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,6 +202,26 @@ public class dlgAccessSystem extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        _aceptar();
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+        if (evt.getKeyCode()==10) {//el 10 Corresponde a ENTER
+            this.pswPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyReleased
+
+    private void pswPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordKeyReleased
+        if (evt.getKeyCode()==10) {//el 10 Corresponde a ENTER
+            _aceptar();
+        }
+    }//GEN-LAST:event_pswPasswordKeyReleased
+
+    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
+        _cancelar();
+    }//GEN-LAST:event_btn_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
